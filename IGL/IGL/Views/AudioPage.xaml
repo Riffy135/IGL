@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dualScreen="clr-namespace:Xamarin.Forms.DualScreen;assembly=Xamarin.Forms.DualScreen"
+             xmlns:viewmodels="clr-namespace:IGL.ViewModels"
+             x:DataType="viewmodels:ItemDetailViewModel"
+             Title="{Binding SubTitle}"
+             x:Class="IGL.Views.AudioPage">
+    
+    
+    <dualScreen:TwoPaneView WideModeConfiguration="SinglePane" >
+        <dualScreen:TwoPaneView.Pane1 >
+            <Frame BorderColor="CadetBlue" Margin="4">
+                <Grid RowSpacing="25">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label  Grid.Row="0" x:Name="Label1" Text="" TextColor="DarkCyan" FontAttributes="Bold" FontFamily=""></Label>
+                    <Label  Grid.Row="1" x:Name="Label2" Text="" TextColor="DarkCyan" FontAttributes="Bold"></Label>
+                    <Label  Grid.Row="2" x:Name="Label3" Text="" TextColor="DarkCyan" FontAttributes="Bold"></Label>
+                    <Label  Grid.Row="3" x:Name="Label4" Text="" TextColor="DarkCyan" FontAttributes="Bold"></Label>
+                </Grid>
+            </Frame>
+        </dualScreen:TwoPaneView.Pane1 >
+        <dualScreen:TwoPaneView.Pane2 >
+            <Frame BorderColor="CadetBlue" Margin="6">
+
+                <StackLayout Orientation="Vertical" Spacing="8" Margin="9">
+                    <Label Text="Position:"  FontAttributes="Italic,Bold" TextColor="Blue"/>
+                    <Slider x:Name="sliderPosition"  BackgroundColor="Green" HeightRequest="35"/>
+                    <Label x:Name="lblPosition" FontAttributes="Italic,Bold" TextColor="Blue"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="PlayPlayButton" Grid.Row="0" Grid.Column="0"  Text="Play" Clicked="PlayAudio" TextTransform="None"   FontAttributes="Bold" FontSize="9" ImageSource="AudioPlay.png"/>
+                        <Button x:Name="PauseAudioButton" Grid.Row="0" Grid.Column="1" Text="Pause" Clicked="PauseAudio" FontAttributes="Bold" TextTransform="None"  FontSize="9" ImageSource="AudioPause.png"/>
+                        <Button x:Name="StopAudioButton" Grid.Row="0" Grid.Column="2" Text="Stop" Clicked="StopAudio" FontAttributes="Bold" TextTransform="None"  FontSize="9" ImageSource="AudioStop.png"/>
+                        <Button x:Name="ExitAudioButton" Grid.Row="0" Grid.Column="3" Text="Exit" Clicked="ExitAudio" FontAttributes="Bold" TextTransform="None"  FontSize="9" ImageSource="AudioExit.png"/>
+                    </Grid>
+
+                    <Label Text="Volume:" FontAttributes="Italic,Bold" TextColor="Blue"/>
+                    <Slider x:Name="sliderVolume" Minimum="0" Maximum="1" BackgroundColor="Green" HeightRequest="35"/>
+                    <Label Text="Please use the Exit button (above) to leave this screen"></Label>
+
+                </StackLayout>
+            </Frame>
+        </dualScreen:TwoPaneView.Pane2>
+    </dualScreen:TwoPaneView>
+
+</ContentPage>

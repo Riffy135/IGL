@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IGL.Views.ItemDetailPage"
+             xmlns:model="clr-namespace:IGL.Models" xmlns:local="clr-namespace:IGL.ViewModels"
+             x:DataType="local:ItemDetailViewModel"
+             xmlns:community="http://xamarin.com/schemas/2020/toolkit"
+             Title="{Binding Title}">
+    <ContentPage.Behaviors>
+        <community:EventToCommandBehavior Command="{Binding PageAppearCommand}"
+                                          EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Audio" Command="{Binding AudioDetPageCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <RefreshView x:DataType="local:ItemDetailViewModel" Command="{Binding LoadItemDetailsCommand}" IsRefreshing="{Binding IsBusy}">
+        <ScrollView>
+            <CollectionView x:Name="ItemsDetailListView" BackgroundColor="{StaticResource PageBckColour}"  
+                        ItemsSource="{Binding ItemDets}"  
+                        SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="2" x:DataType="model:ItemDets">
+                            <Label Text="{Binding DetText}"  
+                            LineBreakMode="WordWrap"    
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            TextColor="{StaticResource DetTxtColour}"
+                            FontAttributes="Bold"
+                            FontSize="13" ></Label>
+                            <Label Text="{Binding DetDesc}"  CharacterSpacing="0"
+                            LineBreakMode="WordWrap"    
+                            Style="{DynamicResource ListItemDetailTextStyle}" 
+                            TextColor="{StaticResource DescTxtColour}"
+                            FontSize="12"
+                            FontAttributes="Bold" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </RefreshView>
+
+</ContentPage>
